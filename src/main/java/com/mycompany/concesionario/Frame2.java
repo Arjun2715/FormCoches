@@ -9,7 +9,7 @@ package com.mycompany.concesionario;
  * @author Alumno
  */
 public class Frame2 extends javax.swing.JFrame {
-     public javax.swing.JTextField jTextField1;
+   /**  public javax.swing.JTextField jTextField1;
      public javax.swing.JTextField jTextField3;
      public javax.swing.JTextField jTextField4;
      public javax.swing.JTextField jTextField5;
@@ -17,7 +17,7 @@ public class Frame2 extends javax.swing.JFrame {
      public javax.swing.JTextField jTextField7;
      public javax.swing.JTextField jTextField8;
      public javax.swing.JTextField jTextField9;
-    /**
+    
      * Creates new form Frame2
      */
     public Frame2() {
@@ -63,11 +63,11 @@ public class Frame2 extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Modelo");
+        jLabel2.setText("Tipo");
 
         jLabel3.setText("Color");
 
-        jLabel4.setText("Marca");
+        jLabel4.setText("Velocidad");
 
         jLabel5.setText("Año");
 
@@ -75,7 +75,7 @@ public class Frame2 extends javax.swing.JFrame {
 
         jLabel7.setText("Núm. Puertas");
 
-        jLabel8.setText("Velocidad");
+        jLabel8.setText("Marcas");
 
         jLabel9.setText("Descripcion");
 
@@ -86,7 +86,6 @@ public class Frame2 extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
-
             }
         });
 
@@ -224,8 +223,6 @@ public class Frame2 extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-
-
     }// </editor-fold>//GEN-END:initComponents
     public void update(String nombre,String modelo,String marca, String color){
         jTextField1.setText(nombre);
@@ -313,8 +310,14 @@ public class Frame2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

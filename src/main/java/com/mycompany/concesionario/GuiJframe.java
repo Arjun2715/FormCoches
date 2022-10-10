@@ -1,5 +1,7 @@
 package com.mycompany.concesionario;
 
+import java.io.File;
+import java.io.FileWriter;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
@@ -9,7 +11,7 @@ public class GuiJframe extends javax.swing.JFrame {
     private final int Fecha = 03 / 10 / 2022;
     Date date = new Date();
     private String string = "03/10/2022";
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnCaracterísticas;
     private javax.swing.JButton btnContrato;
     private javax.swing.JLabel fecha;
@@ -371,12 +373,18 @@ public class GuiJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         try {
             int i = jTable2.getSelectedRow();
             System.out.println(i);
             Object[] fila = new Object[]{jTable2.getValueAt(i, 0), jTable2.getValueAt(i, 1), jTable2.getValueAt(i, 2), jTable2.getValueAt(i, 3), jTable2.getValueAt(i, 4), jTable2.getValueAt(i, 5)};
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.addRow(fila);
+            writeFile();
+            File file = new File("D:\\Nueva carpeta\\FormCochesV1\\FormCoches\\coche.txt");
+            FileWriter fr = new FileWriter(file);
+            fr.write(jTable2.getValueAt(i, 0)+" "+jTable2.getValueAt(i, 1)+" "+ jTable2.getValueAt(i, 2)+" "+ jTable2.getValueAt(i, 3)+" "+ jTable2.getValueAt(i, 4)+" "+ jTable2.getValueAt(i, 5));
+            fr.close();
         }catch (Exception e) {
 
             if(jTable2.getRowCount() == 0){
@@ -387,7 +395,12 @@ public class GuiJframe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Porfavor selecione un campos!!!", "Error", JOptionPane.ERROR_MESSAGE);
 
             }}
-
+        
+      
+            
+            
+        
+        
         /*
         --------------falta para hacer-------------------
         if (i == 0) {
@@ -396,7 +409,9 @@ public class GuiJframe extends javax.swing.JFrame {
         }
         */
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private void writeFile(){
+        
+    }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -433,5 +448,5 @@ public class GuiJframe extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnCaracterísticasActionPerformed
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
