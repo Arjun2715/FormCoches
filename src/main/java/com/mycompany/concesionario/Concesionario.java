@@ -1,5 +1,5 @@
 
-package com.mycompany.concesionario;
+package com.mycompany.concesionario;    
 
 public class Concesionario {
 

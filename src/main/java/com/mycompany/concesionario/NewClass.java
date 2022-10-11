@@ -1,7 +1,9 @@
 package com.mycompany.concesionario;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
+
 public class NewClass {
 
     public static void main(String[] args) {
@@ -13,17 +15,25 @@ public class NewClass {
         int cont =1;
         try{
             //intentar abrir un archivo
-            File f = new File("C:/Temp/Enteros.txt");
+            /*File f = new File("D:\\Nueva carpeta\\FormCochesV1\\FormCoches\\coche.txt");
             
             Scanner lectura = new Scanner(f);
             //Si se ejecuta, se ha abierto al fichero
-            for (int i = 0; i < 10; i++) {
-                int valor = lectura.nextInt();
-                System.out.println("El valor["+cont+"] leido es: " + valor);
-                cont++;
-            }
             
-            lectura.close();
+            while (lectura.hasNext()) {
+                String[] next = lectura.nextLine().split(";");
+                System.out.print(Arrays.toString(next));
+            }
+            File folder = new File("D:\\Java\\FormCoches\\Coches");
+            String[] filenames = folder.list();
+            for (int i = 0; i < filenames.length; i++) {
+                if(filenames[i].equals());
+            }*/
+                
+                
+            
+            //lectura.close();
+            
         }catch(Exception e){
             System.out.println("Error: "+e);
         }

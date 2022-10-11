@@ -2,14 +2,17 @@ package com.mycompany.concesionario;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.Date;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class GuiJframe extends javax.swing.JFrame {
 
-    private final int Fecha = 03 / 10 / 2022;
-    Date date = new Date();
-    private String string = "03/10/2022";
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnCaracterísticas;
     private javax.swing.JButton btnContrato;
     private javax.swing.JLabel fecha;
@@ -32,6 +35,7 @@ public class GuiJframe extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+
     public GuiJframe() {
         initComponents();
     }
@@ -298,39 +302,14 @@ public class GuiJframe extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Get the value of string
-     *
-     * @return the value of string
-     */
-    public String getString() {
-        return string;
-    }
-
-    /**
-     * Set the value of string
-     *
-     * @param string new value of string
-     */
-    public void setString(String string) {
-        this.string = string;
-    }
-
-    /**
-     * Get the value of Fecha
-     *
-     * @return the value of Fecha
-     */
-    public int getFecha() {
-        return Fecha;
-    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jTextField1.getText().isEmpty() ||
-                jTextField2.getText().isEmpty() ||
-                jTextField3.getText().isEmpty() ||
-                jTextField4.getText().isEmpty() ||
-                jTextField5.getText().isEmpty()) {
+
+        if (jTextField1.getText().isEmpty()
+                || jTextField2.getText().isEmpty()
+                || jTextField3.getText().isEmpty()
+                || jTextField4.getText().isEmpty()
+                || jTextField5.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Porfavor Rellenes todos los campos!!!", "Campos Sin Datos", JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -344,18 +323,18 @@ public class GuiJframe extends javax.swing.JFrame {
             while (i < jTable2.getRowCount() && !excepcion) {
                 float dinero2 = (float) (jTable2.getValueAt(i, 3));
                 Object[] fila = new Object[]{jTable2.getValueAt(i, 0),
-                                            jTable2.getValueAt(i, 1),
-                                            jTable2.getValueAt(i, 2),
-                                            dinero2,
-                                            jTable2.getValueAt(i, 3),
-                                            jTable2.getValueAt(i, 4),
-                                            jTable2.getValueAt(i, 5)};
-                if (jTable2.getValueAt(i, 0).toString().equals(newRow[0].toString()) &&
-                        jTable2.getValueAt(i, 1).toString().equals(newRow[1].toString()) &&
-                        jTable2.getValueAt(i, 2).toString().equals(newRow[2].toString()) &&
-                        jTable2.getValueAt(i, 3).toString().equals(newRow[3].toString()) &&
-                        jTable2.getValueAt(i, 4).toString().equals(newRow[4].toString()) &&
-                        jTable2.getValueAt(i, 5).toString().equals(newRow[5].toString())) {
+                        jTable2.getValueAt(i, 1),
+                        jTable2.getValueAt(i, 2),
+                        dinero2,
+                        jTable2.getValueAt(i, 3),
+                        jTable2.getValueAt(i, 4),
+                        jTable2.getValueAt(i, 5)};
+                if (jTable2.getValueAt(i, 0).toString().equals(newRow[0].toString())
+                        && jTable2.getValueAt(i, 1).toString().equals(newRow[1].toString())
+                        && jTable2.getValueAt(i, 2).toString().equals(newRow[2].toString())
+                        && jTable2.getValueAt(i, 3).toString().equals(newRow[3].toString())
+                        && jTable2.getValueAt(i, 4).toString().equals(newRow[4].toString())
+                        && jTable2.getValueAt(i, 5).toString().equals(newRow[5].toString())) {
                     excepcion = true;
                 }
                 ++i;
@@ -371,22 +350,28 @@ public class GuiJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         try {
             int i = jTable2.getSelectedRow();
             System.out.println(i);
             Object[] fila = new Object[]{jTable2.getValueAt(i, 0), jTable2.getValueAt(i, 1), jTable2.getValueAt(i, 2), jTable2.getValueAt(i, 3), jTable2.getValueAt(i, 4), jTable2.getValueAt(i, 5)};
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.addRow(fila);
-        }catch (Exception e) {
+            File file = new File("D:\\Java\\FormCoches\\coche.txt");
+            FileWriter fr = new FileWriter(file);
+            fr.write(jTable2.getValueAt(i, 0) + " " + jTable2.getValueAt(i, 1) + " " + jTable2.getValueAt(i, 2) + " " + jTable2.getValueAt(i, 3) + " " + jTable2.getValueAt(i, 4) + " " + jTable2.getValueAt(i, 5));
+            fr.close();
+        } catch (Exception e) {
 
-            if(jTable2.getRowCount() == 0){
+            if (jTable2.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "No Dato Disponible!!!", "Error", JOptionPane.ERROR_MESSAGE);
 
-            }else{
+            } else {
 
                 JOptionPane.showMessageDialog(null, "Porfavor selecione un campos!!!", "Error", JOptionPane.ERROR_MESSAGE);
 
-            }}
+            }
+        }
 
         /*
         --------------falta para hacer-------------------
@@ -394,7 +379,7 @@ public class GuiJframe extends javax.swing.JFrame {
         } else {
 
         }
-        */
+         */
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -412,26 +397,71 @@ public class GuiJframe extends javax.swing.JFrame {
         f1.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }//GEN-LAST:event_btnContratoActionPerformed
 
-    private void btnCaracterísticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaracterísticasActionPerformed
-        // TODO add your handling code here:
+    private void btnCaracterísticasActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCaracterísticasActionPerformed
+        try { // TODO add your handling code here:
 
 
-        String cNombre = jTextField1.getText();
-        String cModelo = jTextField2.getText();
-        String cMarca = jTextField3.getText();
-        String cColor = jTextField5.getText();
-        Frame2 f2 = new Frame2();
-        f2.update(cNombre,cModelo,cMarca,cColor);
-        f2.setVisible(true);
-        f2.setDefaultCloseOperation(HIDE_ON_CLOSE);
+            if (jTextField2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El campo esta vacio!!!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                String[] arr = new String[9];
+                String file = "";
+                //open folder coches and get file name/select file to open for data extraction
+                File folder = new File("D:\\Java\\FormCoches\\Coches");
+                String[] filenames = folder.list();
+                //System.out.println(Arrays.toString(filenames));
+                String carmame = jTextField2.getText();
+                for (int i = 0; i < 3; i++) {
+                    String name = Objects.requireNonNull(filenames)[i].substring(filenames[i].lastIndexOf("\\") + 1, filenames[i].length() - 4);
+                    if (carmame.equals(name)) {
+                        file = name;
+                    }
+                }
+                //-----------------------------------------------
 
+                String f = "D:\\Java\\FormCoches\\Coches\\" + file + ".txt";
+                System.out.println(f);
+                File openfile = new File(f);
 
+            /*
+            this ver doesn't work //erroe
+            arr = openfile.toString().split(";");
+            for (int i = 0; i < 9; i++) {
+                System.out.println(arr[i]);
+            }
+            arr = openfile.list();*/
 
+                Scanner lectura = new Scanner(openfile);
+                while (lectura.hasNext()) {
+                    arr = lectura.nextLine().split(";");
+                    System.out.println(Arrays.toString(arr));
+                }
+                if (jTextField2.getText().equalsIgnoreCase(file)) {
+                    String Nombre = arr[0];
+                    String Tipo = arr[1];
+                    String Velocidad = arr[2];
+                    String Color = arr[3];
+                    String Año = arr[4];
+                    String Motor = arr[5];
+                    String Puertas = arr[6];
+                    String Marca = arr[7];
+                    String Desc = arr[8];
+                    Frame2 f2 = new Frame2();
+                    f2.insertData(Nombre, Tipo, Velocidad, Color, Año, Motor, Puertas, Marca, Desc);
+                    f2.setVisible(true);
+                    f2.setDefaultCloseOperation(HIDE_ON_CLOSE);
+                    lectura.close();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Este coche no existe en el sistema!!!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
 
-
-
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        //System.out.println("fine till here");
 
 
     }//GEN-LAST:event_btnCaracterísticasActionPerformed
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
